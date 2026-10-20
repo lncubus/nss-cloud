@@ -6,8 +6,8 @@ A desktop browser game with eight planets at real orbital distances, Newtonian s
 
 ## Controls
 
-- Player 1: W/S thrust, A/D yaw, Q/E vertical thrust.
-- Player 2: arrow keys for thrust/yaw, Page Up/Down for vertical thrust.
+- Player 1: W forward thrust, A/D yaw, Q/E pitch.
+- Player 2: ↑ for forward thrust, ←/→ for yaw, Page Up/Down for pitch.
 - Drag to rotate the camera; scroll to zoom.
 - Inner system, All planets, and Follow ship select viewing ranges.
 - Space pauses; R resets. Select Two pilots for local multiplayer.
@@ -17,11 +17,13 @@ A desktop browser game with eight planets at real orbital distances, Newtonian s
 
 Distances are AU (149,597,870.7 km); time is days since J2000; masses are solar masses. All eight planets follow inclined elliptical Kepler orbits with approximate J2000 mean elements. The Sun is fixed. This is not a live ephemeris or a full planetary N-body integration; moons and planetary mutual perturbations are omitted.
 
+Each ship has a single forward engine. Pitch and yaw change its orientation without applying thrust. To slow down, turn against the direction of travel and fire the main engine. S and ↓ do not apply propulsion.
+
 Ships feel 3D inverse-square gravity from the Sun and every planet, integrated with velocity Verlet. Visual planet radii are enlarged by default; gravity and collision checks use physical quantities. Forecasts assume no thrust. Ships start near Earth with its orbital velocity.
 
 ## Validation
 
-Run `node --check dist/game.js` and `node tests/physics.cjs` from the repository root. The physics checks cover orbital bounds, 3D gravity, stable initial flight, vertical thrust, local multiplayer, and collision recovery. These checks do not replace visual browser testing.
+Run `node --check dist/game.js` and `node tests/physics.cjs` from the repository root. The physics checks cover orbital bounds, 3D gravity, stable initial flight, forward-only thrust, pitch steering, local multiplayer, and collision recovery. These checks do not replace visual browser testing.
 
 ## Publishing
 
